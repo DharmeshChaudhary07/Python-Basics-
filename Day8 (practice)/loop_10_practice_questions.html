@@ -1,0 +1,244 @@
+<style>
+*{box-sizing:border-box}
+.q-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:16px 18px;margin-bottom:10px}
+.q-header{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.q-num{font-size:12px;color:var(--color-text-tertiary);font-weight:500}
+.badge{font-size:11px;font-weight:500;padding:2px 8px;border-radius:4px}
+.easy{background:#E1F5EE;color:#085041}
+.medium{background:#FAEEDA;color:#633806}
+.hard{background:#FAECE7;color:#712B13}
+.tag{background:#E6F1FB;color:#0C447C}
+.tag2{background:#EEEDFE;color:#3C3489}
+.q-title{font-size:14px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px}
+.q-desc{font-size:13px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:10px}
+.reveal{font-size:12px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:9px 12px;margin-bottom:10px;display:none;line-height:1.7}
+.reveal.code{font-family:var(--font-mono);white-space:pre;color:var(--color-text-primary)}
+.reveal.hint{color:var(--color-text-secondary)}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap}
+.btn-sm{font-size:12px;padding:4px 12px;cursor:pointer;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:transparent;color:var(--color-text-secondary)}
+.btn-sm:hover{background:var(--color-background-secondary)}
+.done-btn{font-size:12px;padding:4px 12px;cursor:pointer;border:0.5px solid #1D9E75;border-radius:var(--border-radius-md);background:transparent;color:#085041}
+.done-btn.marked{background:#E1F5EE}
+.prog-wrap{margin-bottom:16px}
+.prog-label{font-size:12px;color:var(--color-text-secondary);margin-bottom:5px}
+.prog-bar{height:6px;background:var(--color-background-secondary);border-radius:3px;overflow:hidden}
+.prog-fill{height:100%;background:#1D9E75;border-radius:3px;transition:width 0.3s;width:0%}
+</style>
+<h2 class="sr-only">10 Python loop practice questions with hints, answers, and progress tracking</h2>
+
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px">
+  <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px;text-align:center">
+    <div style="font-size:20px;font-weight:500;color:var(--color-text-primary)">10</div>
+    <div style="font-size:11px;color:var(--color-text-secondary)">questions</div>
+  </div>
+  <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px;text-align:center">
+    <div style="font-size:20px;font-weight:500;color:#085041">4</div>
+    <div style="font-size:11px;color:var(--color-text-secondary)">easy</div>
+  </div>
+  <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px;text-align:center">
+    <div style="font-size:20px;font-weight:500;color:#633806">4 med / 2 hard</div>
+    <div style="font-size:11px;color:var(--color-text-secondary)">progressively harder</div>
+  </div>
+</div>
+
+<div class="prog-wrap">
+  <div class="prog-label">Progress: <span id="prog-text">0 of 10 done</span></div>
+  <div class="prog-bar"><div class="prog-fill" id="prog-fill"></div></div>
+</div>
+
+<!-- Q1 -->
+<div class="q-card">
+  <div class="q-header"><span class="q-num">Q1</span><span class="badge easy">easy</span><span class="badge tag">for loop</span></div>
+  <div class="q-title">Print 1 to 10</div>
+  <div class="q-desc">Print all numbers from 1 to 10, each on a new line using a for loop.</div>
+  <div class="reveal hint" id="h1">range(1, 11) gives you 1 through 10. range(10) starts from 0 — watch the difference.</div>
+  <div class="reveal code" id="a1">for i in range(1, 11):
+    print(i)</div>
+  <div class="btn-row">
+    <button class="btn-sm" onclick="tog('h1',this,'hint')">Show hint</button>
+    <button class="btn-sm" onclick="tog('a1',this,'answer')">Show answer</button>
+    <button class="done-btn" id="d1" onclick="markDone(1)">Mark done</button>
+  </div>
+</div>
+
+<!-- Q2 -->
+<div class="q-card">
+  <div class="q-header"><span class="q-num">Q2</span><span class="badge easy">easy</span><span class="badge tag">for loop</span></div>
+  <div class="q-title">Sum of 1 to 100</div>
+  <div class="q-desc">Calculate and print the sum of all numbers from 1 to 100 using a for loop.</div>
+  <div class="reveal hint" id="h2">Start with total = 0 before the loop, then add each i to total inside the loop.</div>
+  <div class="reveal code" id="a2">total = 0
+for i in range(1, 101):
+    total = total + i
+print(total)</div>
+  <div class="btn-row">
+    <button class="btn-sm" onclick="tog('h2',this,'hint')">Show hint</button>
+    <button class="btn-sm" onclick="tog('a2',this,'answer')">Show answer</button>
+    <button class="done-btn" id="d2" onclick="markDone(2)">Mark done</button>
+  </div>
+</div>
+
+<!-- Q3 -->
+<div class="q-card">
+  <div class="q-header"><span class="q-num">Q3</span><span class="badge easy">easy</span><span class="badge tag2">while loop</span></div>
+  <div class="q-title">Countdown from 10</div>
+  <div class="q-desc">Print a countdown from 10 down to 1 using a while loop. Print "Go!" at the end.</div>
+  <div class="reveal hint" id="h3">Start n = 10, loop while n >= 1, print n, then subtract 1 from n each iteration.</div>
+  <div class="reveal code" id="a3">n = 10
+while n >= 1:
+    print(n)
+    n = n - 1
+print("Go!")</div>
+  <div class="btn-row">
+    <button class="btn-sm" onclick="tog('h3',this,'hint')">Show hint</button>
+    <button class="btn-sm" onclick="tog('a3',this,'answer')">Show answer</button>
+    <button class="done-btn" id="d3" onclick="markDone(3)">Mark done</button>
+  </div>
+</div>
+
+<!-- Q4 -->
+<div class="q-card">
+  <div class="q-header"><span class="q-num">Q4</span><span class="badge easy">easy</span><span class="badge tag">for loop</span></div>
+  <div class="q-title">Multiplication table of 5</div>
+  <div class="q-desc">Print the multiplication table of 5 from 5×1 to 5×10. Each line: 5 x 1 = 5</div>
+  <div class="reveal hint" id="h4">Loop i from 1 to 10. Inside the loop print: 5, "x", i, "=", 5*i</div>
+  <div class="reveal code" id="a4">for i in range(1, 11):
+    print(5, "x", i, "=", 5*i)</div>
+  <div class="btn-row">
+    <button class="btn-sm" onclick="tog('h4',this,'hint')">Show hint</button>
+    <button class="btn-sm" onclick="tog('a4',this,'answer')">Show answer</button>
+    <button class="done-btn" id="d4" onclick="markDone(4)">Mark done</button>
+  </div>
+</div>
+
+<!-- Q5 -->
+<div class="q-card">
+  <div class="q-header"><span class="q-num">Q5</span><span class="badge medium">medium</span><span class="badge tag">for + if</span></div>
+  <div class="q-title">Print even numbers</div>
+  <div class="q-desc">Print only the even numbers between 1 and 20. Use a for loop with an if condition inside.</div>
+  <div class="reveal hint" id="h5">A number is even if number % 2 == 0. The % operator gives the remainder after division.</div>
+  <div class="reveal code" id="a5">for i in range(1, 21):
+    if i % 2 == 0:
+        print(i)</div>
+  <div class="btn-row">
+    <button class="btn-sm" onclick="tog('h5',this,'hint')">Show hint</button>
+    <button class="btn-sm" onclick="tog('a5',this,'answer')">Show answer</button>
+    <button class="done-btn" id="d5" onclick="markDone(5)">Mark done</button>
+  </div>
+</div>
+
+<!-- Q6 -->
+<div class="q-card">
+  <div class="q-header"><span class="q-num">Q6</span><span class="badge medium">medium</span><span class="badge tag">for + if</span></div>
+  <div class="q-title">FizzBuzz</div>
+  <div class="q-desc">Print numbers 1 to 30. Print "Fizz" for multiples of 3, "Buzz" for multiples of 5, "FizzBuzz" for multiples of both — otherwise print the number.</div>
+  <div class="reveal hint" id="h6">Check FizzBuzz condition first (both 3 and 5), then Fizz, then Buzz, then the number. Order matters here!</div>
+  <div class="reveal code" id="a6">for i in range(1, 31):
+    if i % 3 == 0 and i % 5 == 0:
+        print("FizzBuzz")
+    elif i % 3 == 0:
+        print("Fizz")
+    elif i % 5 == 0:
+        print("Buzz")
+    else:
+        print(i)</div>
+  <div class="btn-row">
+    <button class="btn-sm" onclick="tog('h6',this,'hint')">Show hint</button>
+    <button class="btn-sm" onclick="tog('a6',this,'answer')">Show answer</button>
+    <button class="done-btn" id="d6" onclick="markDone(6)">Mark done</button>
+  </div>
+</div>
+
+<!-- Q7 -->
+<div class="q-card">
+  <div class="q-header"><span class="q-num">Q7</span><span class="badge medium">medium</span><span class="badge tag2">while + break</span></div>
+  <div class="q-title">Number guessing game</div>
+  <div class="q-desc">Set secret = 7. Keep asking the user to guess a number. Print "Try again" until they get it right, then print "Correct!" and stop.</div>
+  <div class="reveal hint" id="h7">Use while True to loop forever. Use break to exit when guess is correct. Use int(input()) to read a number.</div>
+  <div class="reveal code" id="a7">secret = 7
+while True:
+    guess = int(input("Guess: "))
+    if guess == secret:
+        print("Correct!")
+        break
+    else:
+        print("Try again")</div>
+  <div class="btn-row">
+    <button class="btn-sm" onclick="tog('h7',this,'hint')">Show hint</button>
+    <button class="btn-sm" onclick="tog('a7',this,'answer')">Show answer</button>
+    <button class="done-btn" id="d7" onclick="markDone(7)">Mark done</button>
+  </div>
+</div>
+
+<!-- Q8 -->
+<div class="q-card">
+  <div class="q-header"><span class="q-num">Q8</span><span class="badge medium">medium</span><span class="badge tag">for + continue</span></div>
+  <div class="q-title">Skip multiples of 3</div>
+  <div class="q-desc">Print numbers 1 to 20, but skip any number that is a multiple of 3. Use the continue keyword.</div>
+  <div class="reveal hint" id="h8">Inside the loop, if i % 3 == 0, use continue to skip to the next iteration without printing.</div>
+  <div class="reveal code" id="a8">for i in range(1, 21):
+    if i % 3 == 0:
+        continue
+    print(i)</div>
+  <div class="btn-row">
+    <button class="btn-sm" onclick="tog('h8',this,'hint')">Show hint</button>
+    <button class="btn-sm" onclick="tog('a8',this,'answer')">Show answer</button>
+    <button class="done-btn" id="d8" onclick="markDone(8)">Mark done</button>
+  </div>
+</div>
+
+<!-- Q9 -->
+<div class="q-card">
+  <div class="q-header"><span class="q-num">Q9</span><span class="badge hard">hard</span><span class="badge tag">nested loops</span></div>
+  <div class="q-title">Star pattern</div>
+  <div class="q-desc">Print this pattern using loops:<br><span style="font-family:var(--font-mono);font-size:12px;color:var(--color-text-primary)">*<br>**<br>***<br>****<br>*****</span></div>
+  <div class="reveal hint" id="h9">The outer loop controls row number (1 to 5). You can print "*" * i to repeat the star i times in one line.</div>
+  <div class="reveal code" id="a9">for i in range(1, 6):
+    print("*" * i)</div>
+  <div class="btn-row">
+    <button class="btn-sm" onclick="tog('h9',this,'hint')">Show hint</button>
+    <button class="btn-sm" onclick="tog('a9',this,'answer')">Show answer</button>
+    <button class="done-btn" id="d9" onclick="markDone(9)">Mark done</button>
+  </div>
+</div>
+
+<!-- Q10 -->
+<div class="q-card">
+  <div class="q-header"><span class="q-num">Q10</span><span class="badge hard">hard</span><span class="badge tag2">while + logic</span></div>
+  <div class="q-title">Factorial calculator</div>
+  <div class="q-desc">Ask the user for a number n, then calculate its factorial using a while loop. Factorial of 5 = 5×4×3×2×1 = 120.</div>
+  <div class="reveal hint" id="h10">Start result = 1. Loop while n > 0, multiply result by n, then decrease n by 1 each time. Print result after the loop.</div>
+  <div class="reveal code" id="a10">n = int(input("Enter a number: "))
+result = 1
+while n > 0:
+    result = result * n
+    n = n - 1
+print("Factorial =", result)</div>
+  <div class="btn-row">
+    <button class="btn-sm" onclick="tog('h10',this,'hint')">Show hint</button>
+    <button class="btn-sm" onclick="tog('a10',this,'answer')">Show answer</button>
+    <button class="done-btn" id="d10" onclick="markDone(10)">Mark done</button>
+  </div>
+</div>
+
+<button style="width:100%;margin-top:6px" onclick="sendPrompt('I finished all 10 loop questions. Now teach me Python lists, tuples, and sets with examples.')">I am done — take me to lists, tuples & sets ↗</button>
+
+<script>
+var done={};
+function tog(id,btn,type){
+  var el=document.getElementById(id);
+  var showing=el.style.display==='block';
+  el.style.display=showing?'none':'block';
+  btn.textContent=showing?('Show '+type):('Hide '+type);
+}
+function markDone(n){
+  if(done[n])return;
+  done[n]=true;
+  var btn=document.getElementById('d'+n);
+  btn.classList.add('marked');
+  btn.textContent='Done ✓';
+  var count=Object.keys(done).length;
+  document.getElementById('prog-text').textContent=count+' of 10 done';
+  document.getElementById('prog-fill').style.width=(count*10)+'%';
+}
+</script>

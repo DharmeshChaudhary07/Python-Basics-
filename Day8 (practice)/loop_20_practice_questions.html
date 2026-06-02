@@ -1,0 +1,466 @@
+<style>
+*{box-sizing:border-box}
+.q-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:15px 17px;margin-bottom:10px}
+.q-header{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap}
+.q-num{font-size:12px;color:var(--color-text-tertiary);font-weight:500}
+.badge{font-size:11px;font-weight:500;padding:2px 8px;border-radius:4px}
+.easy{background:#E1F5EE;color:#085041}
+.medium{background:#FAEEDA;color:#633806}
+.hard{background:#FAECE7;color:#712B13}
+.tag-for{background:#E6F1FB;color:#0C447C}
+.tag-while{background:#EEEDFE;color:#3C3489}
+.tag-mix{background:#EAF3DE;color:#27500A}
+.q-title{font-size:14px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px}
+.q-desc{font-size:13px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:10px}
+.reveal{font-size:12px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:9px 12px;margin-bottom:10px;display:none;line-height:1.7}
+.reveal.code{font-family:var(--font-mono);white-space:pre;color:var(--color-text-primary);overflow-x:auto}
+.reveal.hint{color:var(--color-text-secondary)}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap}
+.btn-sm{font-size:12px;padding:4px 12px;cursor:pointer;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:transparent;color:var(--color-text-secondary)}
+.btn-sm:hover{background:var(--color-background-secondary)}
+.done-btn{font-size:12px;padding:4px 12px;cursor:pointer;border:0.5px solid #1D9E75;border-radius:var(--border-radius-md);background:transparent;color:#085041}
+.done-btn.marked{background:#E1F5EE}
+.sec-label{font-size:13px;font-weight:500;color:var(--color-text-secondary);margin:18px 0 8px;padding-left:2px;border-left:3px solid var(--color-border-secondary);padding-left:8px}
+.prog-label{font-size:12px;color:var(--color-text-secondary);margin-bottom:5px}
+.prog-bar{height:6px;background:var(--color-background-secondary);border-radius:3px;overflow:hidden;margin-bottom:16px}
+.prog-fill{height:100%;background:#1D9E75;border-radius:3px;transition:width 0.3s;width:0%}
+</style>
+<h2 class="sr-only">20 Python loop practice questions: 8 easy, 8 medium, 4 hard</h2>
+
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px">
+  <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px;text-align:center">
+    <div style="font-size:18px;font-weight:500;color:var(--color-text-primary)">20</div>
+    <div style="font-size:11px;color:var(--color-text-secondary)">total</div>
+  </div>
+  <div style="background:#E1F5EE;border-radius:var(--border-radius-md);padding:10px;text-align:center">
+    <div style="font-size:18px;font-weight:500;color:#085041">8</div>
+    <div style="font-size:11px;color:#085041">easy</div>
+  </div>
+  <div style="background:#FAEEDA;border-radius:var(--border-radius-md);padding:10px;text-align:center">
+    <div style="font-size:18px;font-weight:500;color:#633806">8</div>
+    <div style="font-size:11px;color:#633806">medium</div>
+  </div>
+  <div style="background:#FAECE7;border-radius:var(--border-radius-md);padding:10px;text-align:center">
+    <div style="font-size:18px;font-weight:500;color:#712B13">4</div>
+    <div style="font-size:11px;color:#712B13">hard</div>
+  </div>
+</div>
+
+<div class="prog-label">Progress: <span id="prog-text">0 of 20 done</span></div>
+<div class="prog-bar"><div class="prog-fill" id="prog-fill"></div></div>
+
+<!-- ===== EASY ===== -->
+<div class="sec-label">Easy — Q1 to Q8</div>
+
+<!-- Q1 -->
+<div class="q-card">
+  <div class="q-header"><span class="q-num">Q1</span><span class="badge easy">easy</span><span class="badge tag-for">for loop</span></div>
+  <div class="q-title">Print odd numbers</div>
+  <div class="q-desc">Print all odd numbers from 1 to 15.</div>
+  <div class="reveal hint" id="h1">A number is odd if number % 2 != 0. You can also use range(1, 16, 2) to step by 2.</div>
+  <div class="reveal code" id="a1">for i in range(1, 16):
+    if i % 2 != 0:
+        print(i)</div>
+  <div class="btn-row">
+    <button class="btn-sm" onclick="tog('h1',this,'hint')">Show hint</button>
+    <button class="btn-sm" onclick="tog('a1',this,'answer')">Show answer</button>
+    <button class="done-btn" id="d1" onclick="markDone(1)">Mark done</button>
+  </div>
+</div>
+
+<!-- Q2 -->
+<div class="q-card">
+  <div class="q-header"><span class="q-num">Q2</span><span class="badge easy">easy</span><span class="badge tag-for">for loop</span></div>
+  <div class="q-title">Print each character of a string</div>
+  <div class="q-desc">Ask the user for their name. Print each character on a new line using a for loop.</div>
+  <div class="reveal hint" id="h2">Strings are iterable. You can loop directly: for char in name — no range() needed.</div>
+  <div class="reveal code" id="a2">name = input("Enter your name: ")
+for char in name:
+    print(char)</div>
+  <div class="btn-row">
+    <button class="btn-sm" onclick="tog('h2',this,'hint')">Show hint</button>
+    <button class="btn-sm" onclick="tog('a2',this,'answer')">Show answer</button>
+    <button class="done-btn" id="d2" onclick="markDone(2)">Mark done</button>
+  </div>
+</div>
+
+<!-- Q3 -->
+<div class="q-card">
+  <div class="q-header"><span class="q-num">Q3</span><span class="badge easy">easy</span><span class="badge tag-while">while loop</span></div>
+  <div class="q-title">Double until over 100</div>
+  <div class="q-desc">Start with n = 1. Keep doubling it using a while loop and print each value until it exceeds 100.</div>
+  <div class="reveal hint" id="h3">Loop while n <= 100. Inside, print n then set n = n * 2.</div>
+  <div class="reveal code" id="a3">n = 1
+while n <= 100:
+    print(n)
+    n = n * 2</div>
+  <div class="btn-row">
+    <button class="btn-sm" onclick="tog('h3',this,'hint')">Show hint</button>
+    <button class="btn-sm" onclick="tog('a3',this,'answer')">Show answer</button>
+    <button class="done-btn" id="d3" onclick="markDone(3)">Mark done</button>
+  </div>
+</div>
+
+<!-- Q4 -->
+<div class="q-card">
+  <div class="q-header"><span class="q-num">Q4</span><span class="badge easy">easy</span><span class="badge tag-for">for loop</span></div>
+  <div class="q-title">Sum of even numbers</div>
+  <div class="q-desc">Find and print the sum of all even numbers from 1 to 50.</div>
+  <div class="reveal hint" id="h4">Use total = 0 before the loop. Inside, check if i % 2 == 0, then add to total.</div>
+  <div class="reveal code" id="a4">total = 0
+for i in range(1, 51):
+    if i % 2 == 0:
+        total += i
+print(total)</div>
+  <div class="btn-row">
+    <button class="btn-sm" onclick="tog('h4',this,'hint')">Show hint</button>
+    <button class="btn-sm" onclick="tog('a4',this,'answer')">Show answer</button>
+    <button class="done-btn" id="d4" onclick="markDone(4)">Mark done</button>
+  </div>
+</div>
+
+<!-- Q5 -->
+<div class="q-card">
+  <div class="q-header"><span class="q-num">Q5</span><span class="badge easy">easy</span><span class="badge tag-for">for loop</span></div>
+  <div class="q-title">Repeat a word</div>
+  <div class="q-desc">Ask the user for a word and a number n. Print that word n times using a for loop.</div>
+  <div class="reveal hint" id="h5">Use range(n) to loop n times. Each iteration just prints the word.</div>
+  <div class="reveal code" id="a5">word = input("Enter a word: ")
+n = int(input("How many times? "))
+for i in range(n):
+    print(word)</div>
+  <div class="btn-row">
+    <button class="btn-sm" onclick="tog('h5',this,'hint')">Show hint</button>
+    <button class="btn-sm" onclick="tog('a5',this,'answer')">Show answer</button>
+    <button class="done-btn" id="d5" onclick="markDone(5)">Mark done</button>
+  </div>
+</div>
+
+<!-- Q6 -->
+<div class="q-card">
+  <div class="q-header"><span class="q-num">Q6</span><span class="badge easy">easy</span><span class="badge tag-while">while loop</span></div>
+  <div class="q-title">Keep asking until "quit"</div>
+  <div class="q-desc">Keep asking the user to enter something. Stop the loop only when they type "quit".</div>
+  <div class="reveal hint" id="h6">Use while True. Read input each iteration. If the input equals "quit", break.</div>
+  <div class="reveal code" id="a6">while True:
+    text = input("Enter something (or quit): ")
+    if text == "quit":
+        break
+    print("You entered:", text)</div>
+  <div class="btn-row">
+    <button class="btn-sm" onclick="tog('h6',this,'hint')">Show hint</button>
+    <button class="btn-sm" onclick="tog('a6',this,'answer')">Show answer</button>
+    <button class="done-btn" id="d6" onclick="markDone(6)">Mark done</button>
+  </div>
+</div>
+
+<!-- Q7 -->
+<div class="q-card">
+  <div class="q-header"><span class="q-num">Q7</span><span class="badge easy">easy</span><span class="badge tag-for">for loop</span></div>
+  <div class="q-title">Count down by 3</div>
+  <div class="q-desc">Print numbers from 30 down to 0, counting down by 3 each time (30, 27, 24 ... 0).</div>
+  <div class="reveal hint" id="h7">range() has a third argument for step. range(30, -1, -3) counts down by 3 and includes 0.</div>
+  <div class="reveal code" id="a7">for i in range(30, -1, -3):
+    print(i)</div>
+  <div class="btn-row">
+    <button class="btn-sm" onclick="tog('h7',this,'hint')">Show hint</button>
+    <button class="btn-sm" onclick="tog('a7',this,'answer')">Show answer</button>
+    <button class="done-btn" id="d7" onclick="markDone(7)">Mark done</button>
+  </div>
+</div>
+
+<!-- Q8 -->
+<div class="q-card">
+  <div class="q-header"><span class="q-num">Q8</span><span class="badge easy">easy</span><span class="badge tag-for">for loop</span></div>
+  <div class="q-title">Count vowels in a word</div>
+  <div class="q-desc">Ask the user for a word. Count and print how many vowels (a, e, i, o, u) it contains.</div>
+  <div class="reveal hint" id="h8">Loop through each character. Check if the char is in the string "aeiou". Use a counter variable.</div>
+  <div class="reveal code" id="a8">word = input("Enter a word: ").lower()
+count = 0
+for char in word:
+    if char in "aeiou":
+        count += 1
+print("Vowels:", count)</div>
+  <div class="btn-row">
+    <button class="btn-sm" onclick="tog('h8',this,'hint')">Show hint</button>
+    <button class="btn-sm" onclick="tog('a8',this,'answer')">Show answer</button>
+    <button class="done-btn" id="d8" onclick="markDone(8)">Mark done</button>
+  </div>
+</div>
+
+<!-- ===== MEDIUM ===== -->
+<div class="sec-label">Medium — Q9 to Q16</div>
+
+<!-- Q9 -->
+<div class="q-card">
+  <div class="q-header"><span class="q-num">Q9</span><span class="badge medium">medium</span><span class="badge tag-mix">for + if</span></div>
+  <div class="q-title">Prime number check</div>
+  <div class="q-desc">Ask the user for a number. Check if it is prime (divisible only by 1 and itself) and print the result.</div>
+  <div class="reveal hint" id="h9">Loop from 2 to n-1. If any number divides n evenly (n % i == 0), it is not prime. Use a flag variable is_prime = True before the loop.</div>
+  <div class="reveal code" id="a9">n = int(input("Enter a number: "))
+is_prime = True
+for i in range(2, n):
+    if n % i == 0:
+        is_prime = False
+        break
+if is_prime and n > 1:
+    print(n, "is prime")
+else:
+    print(n, "is not prime")</div>
+  <div class="btn-row">
+    <button class="btn-sm" onclick="tog('h9',this,'hint')">Show hint</button>
+    <button class="btn-sm" onclick="tog('a9',this,'answer')">Show answer</button>
+    <button class="done-btn" id="d9" onclick="markDone(9)">Mark done</button>
+  </div>
+</div>
+
+<!-- Q10 -->
+<div class="q-card">
+  <div class="q-header"><span class="q-num">Q10</span><span class="badge medium">medium</span><span class="badge tag-while">while + try/except</span></div>
+  <div class="q-title">Safe number input</div>
+  <div class="q-desc">Keep asking the user to enter a number. If they type something that is not a number, print "Invalid! Try again" and ask again. Stop when they give a valid number.</div>
+  <div class="reveal hint" id="h10">Use while True with try/except ValueError inside. If int(input()) fails, the except block runs. If it succeeds, break out.</div>
+  <div class="reveal code" id="a10">while True:
+    try:
+        n = int(input("Enter a number: "))
+        break
+    except ValueError:
+        print("Invalid! Try again")</div>
+  <div class="btn-row">
+    <button class="btn-sm" onclick="tog('h10',this,'hint')">Show hint</button>
+    <button class="btn-sm" onclick="tog('a10',this,'answer')">Show answer</button>
+    <button class="done-btn" id="d10" onclick="markDone(10)">Mark done</button>
+  </div>
+</div>
+
+<!-- Q11 -->
+<div class="q-card">
+  <div class="q-header"><span class="q-num">Q11</span><span class="badge medium">medium</span><span class="badge tag-for">for + if</span></div>
+  <div class="q-title">Find the largest number</div>
+  <div class="q-desc">Ask the user to enter 5 numbers one by one using a loop. After all 5 are entered, print the largest one.</div>
+  <div class="reveal hint" id="h11">Keep a variable largest = None. Each loop, compare the new number with largest and update if it is bigger.</div>
+  <div class="reveal code" id="a11">largest = None
+for i in range(5):
+    n = int(input("Enter number: "))
+    if largest is None or n > largest:
+        largest = n
+print("Largest:", largest)</div>
+  <div class="btn-row">
+    <button class="btn-sm" onclick="tog('h11',this,'hint')">Show hint</button>
+    <button class="btn-sm" onclick="tog('a11',this,'answer')">Show answer</button>
+    <button class="done-btn" id="d11" onclick="markDone(11)">Mark done</button>
+  </div>
+</div>
+
+<!-- Q12 -->
+<div class="q-card">
+  <div class="q-header"><span class="q-num">Q12</span><span class="badge medium">medium</span><span class="badge tag-for">for loop</span></div>
+  <div class="q-title">Reverse a string</div>
+  <div class="q-desc">Ask the user for a word. Print it in reverse using a loop (do not use slicing).</div>
+  <div class="reveal hint" id="h12">Use range(len(word)-1, -1, -1) to loop from the last index to 0. Print word[i] each time. Or build a new string by concatenating.</div>
+  <div class="reveal code" id="a12">word = input("Enter a word: ")
+result = ""
+for i in range(len(word)-1, -1, -1):
+    result += word[i]
+print(result)</div>
+  <div class="btn-row">
+    <button class="btn-sm" onclick="tog('h12',this,'hint')">Show hint</button>
+    <button class="btn-sm" onclick="tog('a12',this,'answer')">Show answer</button>
+    <button class="done-btn" id="d12" onclick="markDone(12)">Mark done</button>
+  </div>
+</div>
+
+<!-- Q13 -->
+<div class="q-card">
+  <div class="q-header"><span class="q-num">Q13</span><span class="badge medium">medium</span><span class="badge tag-while">while + counter</span></div>
+  <div class="q-title">Login with 3 attempts</div>
+  <div class="q-desc">Set a password = "python123". Give the user 3 attempts to guess it. Print "Access granted" or "Locked out" based on the result.</div>
+  <div class="reveal hint" id="h13">Use a counter attempts = 0. Loop while attempts less than 3. Increment counter each time. Break early if correct.</div>
+  <div class="reveal code" id="a13">password = "python123"
+attempts = 0
+while attempts < 3:
+    guess = input("Enter password: ")
+    attempts += 1
+    if guess == password:
+        print("Access granted")
+        break
+else:
+    print("Locked out")</div>
+  <div class="btn-row">
+    <button class="btn-sm" onclick="tog('h13',this,'hint')">Show hint</button>
+    <button class="btn-sm" onclick="tog('a13',this,'answer')">Show answer</button>
+    <button class="done-btn" id="d13" onclick="markDone(13)">Mark done</button>
+  </div>
+</div>
+
+<!-- Q14 -->
+<div class="q-card">
+  <div class="q-header"><span class="q-num">Q14</span><span class="badge medium">medium</span><span class="badge tag-mix">for + if</span></div>
+  <div class="q-title">Count positive and negative</div>
+  <div class="q-desc">Ask the user to enter 6 numbers. Count how many are positive and how many are negative. Print both counts at the end.</div>
+  <div class="reveal hint" id="h14">Keep two counters: pos = 0 and neg = 0. Inside the loop, check if n > 0 or n < 0 and increment accordingly.</div>
+  <div class="reveal code" id="a14">pos = 0
+neg = 0
+for i in range(6):
+    n = int(input("Enter number: "))
+    if n > 0:
+        pos += 1
+    elif n < 0:
+        neg += 1
+print("Positive:", pos)
+print("Negative:", neg)</div>
+  <div class="btn-row">
+    <button class="btn-sm" onclick="tog('h14',this,'hint')">Show hint</button>
+    <button class="btn-sm" onclick="tog('a14',this,'answer')">Show answer</button>
+    <button class="done-btn" id="d14" onclick="markDone(14)">Mark done</button>
+  </div>
+</div>
+
+<!-- Q15 -->
+<div class="q-card">
+  <div class="q-header"><span class="q-num">Q15</span><span class="badge medium">medium</span><span class="badge tag-for">nested for</span></div>
+  <div class="q-title">All multiplication tables</div>
+  <div class="q-desc">Print multiplication tables for numbers 1 through 5. Each table goes from x×1 to x×10.</div>
+  <div class="reveal hint" id="h15">Use two nested for loops. Outer loop: i from 1 to 5 (the table number). Inner loop: j from 1 to 10 (the multiplier).</div>
+  <div class="reveal code" id="a15">for i in range(1, 6):
+    print(f"--- Table of {i} ---")
+    for j in range(1, 11):
+        print(i, "x", j, "=", i*j)</div>
+  <div class="btn-row">
+    <button class="btn-sm" onclick="tog('h15',this,'hint')">Show hint</button>
+    <button class="btn-sm" onclick="tog('a15',this,'answer')">Show answer</button>
+    <button class="done-btn" id="d15" onclick="markDone(15)">Mark done</button>
+  </div>
+</div>
+
+<!-- Q16 -->
+<div class="q-card">
+  <div class="q-header"><span class="q-num">Q16</span><span class="badge medium">medium</span><span class="badge tag-mix">for + continue</span></div>
+  <div class="q-title">Skip numbers divisible by both 2 and 3</div>
+  <div class="q-desc">Print numbers 1 to 30 but skip any number divisible by both 2 and 3 (i.e. 6, 12, 18...). Use continue.</div>
+  <div class="reveal hint" id="h16">Check if n % 2 == 0 and n % 3 == 0. If both are true, use continue to skip that number.</div>
+  <div class="reveal code" id="a16">for i in range(1, 31):
+    if i % 2 == 0 and i % 3 == 0:
+        continue
+    print(i)</div>
+  <div class="btn-row">
+    <button class="btn-sm" onclick="tog('h16',this,'hint')">Show hint</button>
+    <button class="btn-sm" onclick="tog('a16',this,'answer')">Show answer</button>
+    <button class="done-btn" id="d16" onclick="markDone(16)">Mark done</button>
+  </div>
+</div>
+
+<!-- ===== HARD ===== -->
+<div class="sec-label">Hard — Q17 to Q20</div>
+
+<!-- Q17 -->
+<div class="q-card">
+  <div class="q-header"><span class="q-num">Q17</span><span class="badge hard">hard</span><span class="badge tag-mix">nested loops</span></div>
+  <div class="q-title">Print a number pyramid</div>
+  <div class="q-desc">Print this pattern for 5 rows:<br><span style="font-family:var(--font-mono);font-size:12px;color:var(--color-text-primary)">1<br>1 2<br>1 2 3<br>1 2 3 4<br>1 2 3 4 5</span></div>
+  <div class="reveal hint" id="h17">Outer loop: i from 1 to 5 (row number). Inner loop: j from 1 to i. Print j with end=" " to keep on one line. After inner loop, print() for a new line.</div>
+  <div class="reveal code" id="a17">for i in range(1, 6):
+    for j in range(1, i+1):
+        print(j, end=" ")
+    print()</div>
+  <div class="btn-row">
+    <button class="btn-sm" onclick="tog('h17',this,'hint')">Show hint</button>
+    <button class="btn-sm" onclick="tog('a17',this,'answer')">Show answer</button>
+    <button class="done-btn" id="d17" onclick="markDone(17)">Mark done</button>
+  </div>
+</div>
+
+<!-- Q18 -->
+<div class="q-card">
+  <div class="q-header"><span class="q-num">Q18</span><span class="badge hard">hard</span><span class="badge tag-while">while + logic</span></div>
+  <div class="q-title">Collatz conjecture</div>
+  <div class="q-desc">Ask for a number n. If it is even, divide by 2. If odd, multiply by 3 and add 1. Repeat until n reaches 1. Print each step and count how many steps it took.</div>
+  <div class="reveal hint" id="h18">Use while n != 1. Inside: check if n % 2 == 0 for even, else do n = 3*n + 1. Keep a steps counter and increment each loop.</div>
+  <div class="reveal code" id="a18">n = int(input("Enter a number: "))
+steps = 0
+while n != 1:
+    print(n)
+    if n % 2 == 0:
+        n = n // 2
+    else:
+        n = 3 * n + 1
+    steps += 1
+print("Reached 1 in", steps, "steps")</div>
+  <div class="btn-row">
+    <button class="btn-sm" onclick="tog('h18',this,'hint')">Show hint</button>
+    <button class="btn-sm" onclick="tog('a18',this,'answer')">Show answer</button>
+    <button class="done-btn" id="d18" onclick="markDone(18)">Mark done</button>
+  </div>
+</div>
+
+<!-- Q19 -->
+<div class="q-card">
+  <div class="q-header"><span class="q-num">Q19</span><span class="badge hard">hard</span><span class="badge tag-mix">for + logic</span></div>
+  <div class="q-title">Fibonacci sequence</div>
+  <div class="q-desc">Print the first 15 numbers of the Fibonacci sequence (0, 1, 1, 2, 3, 5, 8...) using a loop.</div>
+  <div class="reveal hint" id="h19">Start with a = 0, b = 1. Each iteration: print a, then update a and b together — new_b = a + b, a = b, b = new_b.</div>
+  <div class="reveal code" id="a19">a = 0
+b = 1
+for i in range(15):
+    print(a)
+    a, b = b, a + b</div>
+  <div class="btn-row">
+    <button class="btn-sm" onclick="tog('h19',this,'hint')">Show hint</button>
+    <button class="btn-sm" onclick="tog('a19',this,'answer')">Show answer</button>
+    <button class="done-btn" id="d19" onclick="markDone(19)">Mark done</button>
+  </div>
+</div>
+
+<!-- Q20 -->
+<div class="q-card">
+  <div class="q-header"><span class="q-num">Q20</span><span class="badge hard">hard</span><span class="badge tag-mix">while + full logic</span></div>
+  <div class="q-title">Mini calculator loop</div>
+  <div class="q-desc">Build a calculator that keeps running. Each round ask the user for two numbers and an operator (+, -, *, /). Show the result. If the user types "quit" as the operator, stop the program.</div>
+  <div class="reveal hint" id="h20">Use while True. Read two numbers and an operator each loop. Use if/elif to perform the right operation. Handle division by zero. Break when operator is "quit".</div>
+  <div class="reveal code" id="a20">while True:
+    op = input("Operator (+, -, *, /) or quit: ")
+    if op == "quit":
+        break
+    a = float(input("First number: "))
+    b = float(input("Second number: "))
+    if op == "+":
+        print(a + b)
+    elif op == "-":
+        print(a - b)
+    elif op == "*":
+        print(a * b)
+    elif op == "/":
+        if b == 0:
+            print("Cannot divide by zero")
+        else:
+            print(a / b)
+    else:
+        print("Unknown operator")</div>
+  <div class="btn-row">
+    <button class="btn-sm" onclick="tog('h20',this,'hint')">Show hint</button>
+    <button class="btn-sm" onclick="tog('a20',this,'answer')">Show answer</button>
+    <button class="done-btn" id="d20" onclick="markDone(20)">Mark done</button>
+  </div>
+</div>
+
+<button style="width:100%;margin-top:6px" onclick="sendPrompt('I finished all 20 loop questions. Now teach me Python lists with examples.')">Done — take me to Python lists ↗</button>
+
+<script>
+var done={};
+function tog(id,btn,type){
+  var el=document.getElementById(id);
+  var showing=el.style.display==='block';
+  el.style.display=showing?'none':'block';
+  btn.textContent=showing?('Show '+type):('Hide '+type);
+}
+function markDone(n){
+  if(done[n])return;
+  done[n]=true;
+  var btn=document.getElementById('d'+n);
+  btn.classList.add('marked');
+  btn.textContent='Done ✓';
+  var count=Object.keys(done).length;
+  document.getElementById('prog-text').textContent=count+' of 20 done';
+  document.getElementById('prog-fill').style.width=(count*5)+'%';
+}
+</script>
