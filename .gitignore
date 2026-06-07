@@ -1,0 +1,8 @@
+# Ignore DS_Store everywhere
+**/.DS_Store
+
+# Ignore all HTML files everywhere
+**/*.html
+
+# Ignore .log files everywhere
+**/*.log
