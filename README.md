@@ -19,6 +19,7 @@ The repo is organized into folders by day, tracking progress through core Python
 | `Day10` | Functions — introduction, parameters/arguments/return values, and types of functions |
 | `Day11-12` | Built-in data structures — lists, dictionaries, sets, and tuples |
 | `Day13` | Exception handling, file handling (read/write), and modules & packages (including a custom package) |
+| `Day14 (practice)` | Loop practice — PDF practice questions |
 | `Day15 (practice)` | Loop practice — hard-level loop practice questions |
 
 Each `Day*` folder contains the scripts and notes written while working through that stage of the course. Folders marked **(practice)** are dedicated to reinforcing concepts through extra exercises.
