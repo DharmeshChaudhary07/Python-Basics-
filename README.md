@@ -37,7 +37,7 @@ cd Python-Basics-
 python3 <folder_name>/<script_name>.py
 ```
 
-**Requirements:** Python 3.x
+**Requirements:** Python 3.9 or above
 
 ## 📌 Notes
 
